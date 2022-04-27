@@ -1,6 +1,9 @@
 <h1>this is the page for Songs show.erb file</h1>
 
-<h1> <%=@song.name%> </h1>
+<% if flash.has?(:message) %> <%= flash[:message]%> <%end%>
+
+
+<h1> Name of Song: <%=@song.name%> </h1>
 Artist Name:
 <a href="/artists/<%= @song.artist.slug %>">  <%= @song.artist.name %> </a>
 <br><br>
@@ -8,3 +11,7 @@ Artist Name:
     Artist Genre:
     <a href="/genres/<%= genre.slug %>"> <%= genre.name %> </a>
 <% end %>
+<br><br>
+    <a href="/songs/<%= @song.slug %>/edit">
+        <button>Edit Song</button>
+    </a>
